@@ -1,58 +1,45 @@
-# 🧮 QA: Split Integer - Algorithm Test Suite
+# 🧪 QA Portfolio: Integer Splitting Algorithm & Unit Testing
 
-> ### A precise unit testing suite built with **Jest** to validate mathematical algorithms and array distribution logic.
+> **About this repository:** This project focuses on the foundation of the Agile Testing Pyramid: **Unit Testing**. It demonstrates how to validate core mathematical and logical algorithms (splitting an integer into nearly equal parts) using automated unit tests, static analysis, and continuous integration.
 
-This repository demonstrates how to architect comprehensive automated tests for algorithmic functions. It focuses on validating the `splitInteger` function[cite: 4], ensuring it meets strict mathematical constraints, handles edge cases, and correctly processes Equivalence Classes (evenly divisible vs. indivisible numbers).
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Unit Testing](https://img.shields.io/badge/-Unit_Testing-C21325?style=for-the-badge&logo=jest&logoColor=white)
+![ESLint](https://img.shields.io/badge/-Static_Analysis-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/-CI/CD-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
 
----
+## 🎯 Project Overview
 
-## 🎯 System Under Test (SUT)
+This repository contains a specialized JavaScript utility function designed to split a given integer into a specified number of parts as evenly as possible (`src/splitInteger.js`). 
 
-The function `splitInteger(value, numberOfParts)` is responsible for dividing a given positive integer (`value`) into a specified number of parts (`numberOfParts`)[cite: 4]. 
+As a **QA Automation Engineer**, my objective in this project is to ensure the algorithmic logic behaves predictably by writing and maintaining comprehensive unit tests (`src/splitInteger.test.js`) that cover standard use cases, boundary values, and edge conditions directly at the code level.
 
-**Core Business Rules to Validate:**
-1. **Length Constraint:** The returned array must contain exactly `numberOfParts` elements[cite: 4].
-2. **Distribution Constraint:** The difference between the maximum and minimum numbers in the resulting array must be `<= 1`[cite: 4].
-3. **Ordering Constraint:** The array must be sorted in ascending order (from lowest to highest)[cite: 4].
-4. **Implicit Integrity:** The sum of all elements in the returned array must exactly equal the original `value`.
+## 🛠️ QA Tech Stack & Tools
 
-**Examples of Expected Behavior:**
-- `splitInteger(8, 1)` returns `[8]`[cite: 4]
-- `splitInteger(6, 2)` returns `[3, 3]`[cite: 4]
-- `splitInteger(17, 4)` returns `[4, 4, 4, 5]`[cite: 4]
-- `splitInteger(32, 6)` returns `[5, 5, 5, 5, 6, 6]`[cite: 4]
+* **Testing Level:** Unit Testing (White-Box Testing)
+* **CI/CD Pipeline:** GitHub Actions (Automated test execution on every push/PR)
+* **Static Code Analysis (Shift-Left QA):** ESLint
+* **Core Language:** JavaScript (ES6+)
 
-*(Note: Input argument validation is deliberately out of scope as inputs are guaranteed to be valid positive integers)*[cite: 4].
+## 📊 Test Strategy & Coverage
 
----
+The testing strategy is engineered to isolate and tightly validate the algorithmic business logic:
 
-## 🧪 QA Strategy & Test Design
+### 1. Unit Testing (Code Level Validation)
+Located in `src/splitInteger.test.js`, the automated test suite verifies:
+* Correct mathematical distribution of integers across a given number of parts.
+* Robust handling of edge cases (e.g., splitting into 1 part, numbers smaller than parts, remainder distributions).
+* Data integrity and deterministic array return formats.
 
-To ensure total confidence in the algorithm, the test suite leverages **Jest expectations**[cite: 4] and is structured around the following test scenarios:
+### 2. Continuous Integration (CI/CD)
+The project is seamlessly integrated with GitHub Actions (`.github/workflows/test.yml`). Every commit automatically triggers a pipeline that:
+* Runs `ESLint` to catch syntax, logic, and style errors early in the development lifecycle.
+* Executes the full unit test suite to prevent regressions from reaching production.
 
-| Testing Technique | Scenario Covered | QA Focus |
-| :--- | :--- | :--- |
-| **Equivalence Class Partitioning** | Evenly divisible numbers (e.g., 6 into 2 parts)[cite: 4]. | Verifying that all elements in the array are identical. |
-| **Equivalence Class Partitioning** | Numbers with remainders (e.g., 17 into 4 parts)[cite: 4]. | Validating the remainder distribution and the `max - min <= 1` rule[cite: 4]. |
-| **Boundary Value Analysis (BVA)** | Splitting into exactly 1 part[cite: 4]. | Checking array structure when `numberOfParts === 1`. |
-| **Implicit Requirement Validation** | Array summation. | Using `Array.prototype.reduce()` within tests to assert that no value was lost during the split. |
-| **Order Validation** | Ascending sort check[cite: 4]. | Iterating through the result to assert `arr[i] <= arr[i+1]`. |
+## 🚀 How to Run the Tests Locally
 
----
+To evaluate the unit tests and static analysis tools on your local machine, follow these steps:
 
-## 🧰 Tech Stack
-
-- **Environment:** Node.js
-- **Language:** JavaScript (ES6+)
-- **Testing Framework:** [Jest](https://jestjs.io/) 
-
----
-
-## ⚙️ How to Run the Tests
-
-To execute the test suite locally:
-
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/webdevnikfull/js_split_integer.git](https://github.com/webdevnikfull/js_split_integer.git)
-   cd js_split_integer
+### 1. Environment Setup
+Clone the repository and install the required Node.js dependencies:
+```bash
+npm install
